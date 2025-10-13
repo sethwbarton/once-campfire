@@ -19,5 +19,8 @@ module Campfire
 
     # Use SQL schema format to include search-related objects
     config.active_record.schema_format = :sql
+
+    # Lexxy overrides the action text editor by default, this prevents that while we work on the cutover.
+    config.lexxy.override_action_text_defaults = false
   end
 end

@@ -44,6 +44,9 @@ gem "kredis"
 gem "platform_agent"
 gem "thruster"
 
+# Rich Text Editing
+gem 'lexxy', '~> 0.1.13.beta'
+
 group :development, :test do
   gem "debug"
   gem "rubocop-rails-omakase", require: false
