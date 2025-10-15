@@ -12,12 +12,23 @@
 <% end %>
 
 
-<div style="margin-bottom: 200px; border: 1px solid navajowhite">
+<div style="margin-bottom: 200px;">
   <h1>Here's the Lexxy experience</h1>
-  <%= form_with model: Message.new, url: room_messages_path(@room) do |form| %>
-    <%= form.lexxy_rich_text_area :body, style: "height: 50px;"%>
+  <%= form_with model: Message.new, url: room_messages_path(@room), data: { controller: "lexxy-composer", lexxy_composer_toolbar_class: "composer--rich-text"} do |form| %>
+    <%= form.lexxy_rich_text_area :body %>
+
+    <button class="btn btn--borderless txt-small flex-item-no-shrink composer__rich-text-btn" type="button" data-action="lexxy-composer#toggleToolbar">
+      <%= image_tag "text-options.svg", size: 20, class: "colorize--black", aria: { hidden: "true" } %>
+      <span class="for-screen-reader">Rich text</span>
+    </button>
+
+    <%= form.button name: "send", type: "submit",
+                    class: "btn btn--reversed flex-item-no-shrink txt-small" do %>
+      <%= image_tag "arrow-up.svg", size: 20, aria: { hidden: "true" } %>
+      <span class="for-screen-reader">Send Message</span>
+    <% end %>
+
     <%= form.hidden_field :client_message_id, data: { composer_target: "clientid" } %>
-    <%= form.button name: "send", type: "submit" %>
   <% end %>
 </div>
 

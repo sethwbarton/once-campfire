@@ -104,6 +104,10 @@
       display: block;
     }
 
+    lexxy-toolbar {
+      display: none;
+    }
+
     trix-editor.input {
       margin-block-start: var(--block-space-half);
     }
