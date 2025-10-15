@@ -10,6 +10,14 @@
   padding: var(--input-padding, 0.5em 0.8em);
   resize: none;
 
+  lexxy-editor {
+    border: none;
+  }
+
+  lexxy-toolbar {
+    border: none;
+  }
+
   &[type="search"] {
     &::-webkit-search-decoration,
     &::-webkit-search-results-button,

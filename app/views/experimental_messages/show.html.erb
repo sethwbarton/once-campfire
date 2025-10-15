@@ -14,7 +14,10 @@
 
 <div style="margin-bottom: 200px;">
   <h1>Here's the Lexxy experience</h1>
-  <%= form_with model: Message.new, url: room_messages_path(@room), data: { controller: "lexxy-composer", lexxy_composer_toolbar_class: "composer--rich-text"} do |form| %>
+  <!--TODO: Hide the toolbar by default.-->
+  <%= form_with model: Message.new, url: room_messages_path(@room), class: "input",
+                aria: { multiline: "true", label: "Edit message" },
+                data: { controller: "lexxy-composer", lexxy_composer_toolbar_class: "composer--rich-text"} do |form| %>
     <%= form.lexxy_rich_text_area :body %>
 
     <button class="btn btn--borderless txt-small flex-item-no-shrink composer__rich-text-btn" type="button" data-action="lexxy-composer#toggleToolbar">
