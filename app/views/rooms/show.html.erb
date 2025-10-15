@@ -10,12 +10,14 @@
 <% content_for :sidebar, sidebar_turbo_frame_tag(src: user_sidebar_path) %>
 
 <%= message_area_tag(@room) do %>
+
   <%= render "messages/template" %>
 
   <%= messages_tag(@room) do %>
     <%= render "rooms/show/invitation", room: @room %>
     <%= render partial: "messages/message", collection: @messages, cached: true %>
   <% end %>
+  <%= link_to "Experimental Messages", experimental_messages_path(room_id: @room.id) %>
 
   <%= turbo_stream_from @room, :messages %>
   <%= button_to_jump_to_newest_message %>

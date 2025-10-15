@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "welcome#show"
 
+  resource :experimental_messages
+
   resource :first_run
 
   resource :session do

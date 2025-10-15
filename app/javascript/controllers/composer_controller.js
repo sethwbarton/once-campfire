@@ -20,6 +20,8 @@ export default class extends Controller {
   submit(event) {
     event.preventDefault()
 
+    console.log("Fields target: ", this.fieldsTarget)
+    console.log("Fields target disabled? : ", this.fieldsTarget.disabled)
     if (!this.fieldsTarget.disabled) {
       this.#submitFiles()
       this.#submitMessage()

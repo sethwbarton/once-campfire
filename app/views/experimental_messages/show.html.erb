@@ -1,0 +1,75 @@
+<%= message_area_tag(@room) do %>
+
+  <%= render "messages/template" %>
+
+  <%= messages_tag(@room) do %>
+    <%= render "rooms/show/invitation", room: @room %>
+    <%= render partial: "messages/message", collection: @messages, cached: true %>
+  <% end %>
+
+  <%= turbo_stream_from @room, :messages %>
+  <%= button_to_jump_to_newest_message %>
+<% end %>
+
+
+<div>
+  <div>
+    <h1>Here's the classic experience</h1>
+    <div style="border: 2px solid chartreuse">
+      <%= composer_form_tag(@room) do |form| %>
+        <fieldset data-composer-target="fields">
+          <div class="composer__filelist flex flex--align-center gap flex-wrap" data-composer-target="fileList"></div>
+          <%= form.hidden_field :client_message_id, data: { composer_target: "clientid" } %>
+
+          <%= form.rich_text_area :body,
+                                  rows: 1,
+                                  class: "input",
+                                  style: "order: -1",
+                                  aria: { multiline: "true", label: "Write a message" },
+                                  data: {
+                                    controller: "rich-autocomplete",
+                                    action: rich_text_data_actions,
+                                    rich_autocomplete_url_value: autocompletable_users_path(room_id: @room.id),
+                                    permitted_attachment_types: "application/vnd.actiontext.opengraph-embed",
+                                    composer_target: "text" } %>
+
+
+          <div style="display: flex">
+            <label class="btn btn--borderless txt-small flex-item-no-shrink composer__attachment-btn input--file">
+              <%= image_tag "attachment.svg", size: 22, class: "colorize--black", aria: { hidden: "true" } %>
+              <input type="file" data-action="composer#filePicked" multiple />
+              <span class="for-screen-reader">Attach a file</span>
+            </label>
+
+            <button class="btn btn--borderless txt-small flex-item-no-shrink composer__rich-text-btn" type="button" data-action="composer#toggleToolbar">
+              <%= image_tag "text-options.svg", size: 20, class: "colorize--black", aria: { hidden: "true" } %>
+              <span class="for-screen-reader">Rich text</span>
+            </button>
+
+            <!-- I'd like to get this to submit properly so I can prove it works and that I understand it before moving on. -->
+            <%= form.button name: "send", type: "submit", data: { action: "composer#submit" },
+                            class: "btn btn--reversed flex-item-no-shrink txt-small" do %>
+              <%= image_tag "arrow-up.svg", size: 20, aria: { hidden: "true" } %>
+            <% end %>
+          </div>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div>
+    <h1>Here's the Sexy Lexxy experience</h1>
+    <%= form_with model: Message.new, url: room_messages_path(@room) do |form| %>
+      <%= form.lexxy_rich_text_area :body %>
+      <%= form.hidden_field :client_message_id, data: { composer_target: "clientid" } %>
+      <%= form.button name: "send", type: "submit" %>
+    <% end %>
+  </div>
+</div>
+
+<!--The plan is to make another form control down here but we're going to duplicate everything at first until I get a working Lexxy version.-->
+<!--So we'll have lexxy_composer_controller and lexxy_composer_form_tag etc.-->
+
+<!--Controllers to update / duplicate:-->
+<!--1. Composer-->
