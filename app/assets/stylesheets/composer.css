@@ -121,6 +121,11 @@
   }
 }
 
+.lexxy-editor {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 /* Typing indicator */
 .typing-indicator {
   inset-block-start: var(--indicator-position, 0.15rem);
