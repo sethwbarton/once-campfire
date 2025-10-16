@@ -124,6 +124,16 @@
 .lexxy-editor {
   display: flex;
   flex-direction: column-reverse;
+
+  lexxy-toolbar button {
+    background-color: var(--color-bg);
+  }
+
+  lexxy-toolbar details {
+    summary {
+      background-color: var(--color-bg);
+    }
+  }
 }
 
 /* Typing indicator */
