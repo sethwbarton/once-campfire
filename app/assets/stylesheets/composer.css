@@ -124,6 +124,7 @@
 .lexxy-editor {
   display: flex;
   flex-direction: column-reverse;
+  margin-bottom: -10px;
 
   lexxy-toolbar button {
     background-color: var(--color-bg);

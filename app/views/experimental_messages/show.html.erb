@@ -35,7 +35,7 @@
         <%= form_with model: Message.new, url: room_messages_path(@room),
                       aria: { multiline: "true", label: "Edit message" },
                       data: { controller: "lexxy-composer", lexxy_composer_toolbar_class: "composer--rich-text"} do |form| %>
-          <fieldset data-lexxy-composer-target="fields" style="border: none;">
+          <fieldset data-lexxy-composer-target="fields" contents>
             <div class="flex flex-column">
               <div class="composer__filelist flex flex--align-center gap flex-wrap" data-lexxy-composer-target="fileList"></div>
 
