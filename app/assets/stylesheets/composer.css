@@ -141,7 +141,7 @@
   /* Make the Lexxy editor dense inside the footer composer */
   /* let it shrink to the same height as neighboring controls */
   min-height: 0;
-  padding-block: 0.25rem;
+  padding: 0;
 
   p {
     /* Remove default paragraph margins inside the editor */
