@@ -33,7 +33,6 @@
     <div style="flex-grow: 1">
       <turbo-frame id="lexxy-composer-frame", style="width: 100%">
         <%= form_with model: Message.new, url: room_messages_path(@room),
-                      aria: { multiline: "true", label: "Edit message" },
                       data: { controller: "lexxy-composer", lexxy_composer_toolbar_class: "composer--rich-text"} do |form| %>
           <fieldset data-lexxy-composer-target="fields" contents>
             <div class="flex flex-column">
@@ -44,7 +43,8 @@
                   <%= image_tag "messages-outlined.svg", size: 22, aria: { hidden: "true" }, class: "composer__input-hint colorize--black", style: "view-transition-name: input-btn;" %>
 
                   <div class="flex flex-column flex-item-grow min-width gap">
-                    <%= form.lexxy_rich_text_area :body, class: "lexxy-editor" %>
+                    <%= form.lexxy_rich_text_area :body, class: "input lexxy-editor input", rows: 1,
+                                                  aria: {multiline: "true", label: "Write a message"}%>
                   </div>
 
                   <label class="btn btn--borderless txt-small flex-item-no-shrink composer__attachment-btn input--file">

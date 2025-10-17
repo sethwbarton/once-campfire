@@ -124,10 +124,10 @@
 .lexxy-editor {
   display: flex;
   flex-direction: column-reverse;
-  margin-bottom: -10px;
 
   lexxy-toolbar button {
     background-color: var(--color-bg);
+    margin-bottom: -10px;
   }
 
   lexxy-toolbar details {
@@ -135,6 +135,32 @@
       background-color: var(--color-bg);
     }
   }
+}
+
+/* app/assets/stylesheets/components/composer.css */
+/* Make the Lexxy editor dense inside the footer composer */
+.composer [contenteditable="true"] {
+  /* let it shrink to the same height as neighboring controls */
+  min-height: 0;
+  max-height: 2.5rem;          /* adjust to match your button height */
+  line-height: 1.25;
+  padding-block: 0.25rem;      /* keep a little breathing room */
+}
+
+/* Remove default paragraph margins inside the editor */
+.composer [contenteditable="true"] p {
+  margin: 0;
+}
+
+/* If Lexxy injects a toolbar container, keep it from adding spacing */
+.composer .lexxy-toolbar {
+  margin: 0;
+}
+
+/* Allow the flex row around the editor to actually collapse */
+.composer__input > .flex {
+  min-height: 0;
+  align-items: end;
 }
 
 /* Typing indicator */
