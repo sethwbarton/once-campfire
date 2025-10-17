@@ -150,12 +150,6 @@
 }
 
 
-/* Allow the flex row around the editor to actually collapse */
-.composer__input > .flex {
-  min-height: 0;
-  align-items: end;
-}
-
 /* Typing indicator */
 .typing-indicator {
   inset-block-start: var(--indicator-position, 0.15rem);
