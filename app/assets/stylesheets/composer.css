@@ -126,8 +126,8 @@
   flex-direction: column-reverse;
 
   lexxy-toolbar button {
-    background-color: var(--color-bg);
-    margin-bottom: -10px;
+    background-color: transparent;
+    margin-bottom: -12px;
   }
 
   lexxy-toolbar button:hover {
