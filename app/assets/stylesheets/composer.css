@@ -130,6 +130,10 @@
     margin-bottom: -10px;
   }
 
+  lexxy-toolbar button:hover {
+    box-shadow: none;
+  }
+
   lexxy-toolbar details {
     summary {
       background-color: var(--color-bg);
