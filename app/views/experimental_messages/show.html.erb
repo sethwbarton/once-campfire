@@ -43,7 +43,7 @@
                   <%= image_tag "messages-outlined.svg", size: 22, aria: { hidden: "true" }, class: "composer__input-hint colorize--black", style: "view-transition-name: input-btn;" %>
 
                   <div class="flex flex-column flex-item-grow min-width gap">
-                    <%= form.lexxy_rich_text_area :body, class: "input lexxy-editor input", rows: 1,
+                    <%= form.lexxy_rich_text_area :body, class: "lexxy-editor", rows: 1,
                                                   aria: {multiline: "true", label: "Write a message"}%>
                   </div>
 
