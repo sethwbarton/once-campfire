@@ -32,7 +32,7 @@
 
     <div style="flex-grow: 1">
       <turbo-frame id="lexxy-composer-frame", style="width: 100%">
-        <%= form_with model: Message.new, url: room_messages_path(@room), class: "margin-block",
+        <%= form_with model: Message.new, url: room_messages_path(@room), class: "margin-block composer--rich-text",
                       data: { controller: "lexxy-composer", lexxy_composer_toolbar_class: "composer--rich-text"} do |form| %>
           <fieldset data-lexxy-composer-target="fields" contents>
             <div class="flex flex-column">
